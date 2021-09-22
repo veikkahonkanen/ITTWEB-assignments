@@ -1,0 +1,19 @@
+extends index-layout
+
+block content
+    if errorMessage
+        .alert.alert-danger(role='alert') Error:&nbsp
+            =errorMessage
+    .container-fluid
+        .row.m-sm-5.p-sm-5.text-justify
+            form.w-100(action='/auth/register', method='POST')
+                .form-group
+                    label(for='email') E-mail address
+                    input#email.form-control(type='email' name='email' aria-describedby='email-info' placeholder='Enter e-mail address')
+                    small#email-info.form-text.text-muted We'll never share your e-mail with anyone else.
+                .form-group
+                    label(for='password') Password
+                    input#password.form-control(type='password' name='password' placeholder='Enter password')
+                br
+                button.btn.btn-primary(type='submit') Register
+

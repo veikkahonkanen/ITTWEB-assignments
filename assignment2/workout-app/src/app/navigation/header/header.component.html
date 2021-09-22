@@ -1,0 +1,35 @@
+<mat-toolbar color="primary">
+  <a routerLink="/">
+    <span>FITPUG</span>
+  </a>
+  <span class="spacer"></span>
+  <div class="logged-out" *ngIf="!(isLoggedIn$ | async)">
+    <a mat-button routerLink="/auth/register">
+      <mat-icon>person_add</mat-icon>
+      <label for="register">Register</label>
+    </a>
+    <a mat-button routerLink="/auth/login">
+      <mat-icon>login</mat-icon>
+      <label for="login">Login</label>
+    </a>
+  </div>
+  <a mat-button routerLink="/workouts">
+    <mat-icon>emoji_events</mat-icon>
+    <label for="workouts">Workouts</label>
+  </a>
+  <ng-container *ngIf="isLoggedIn$ | async">
+    <div class="logged-in">
+      <a mat-button routerLink="/workouts/my-workouts">
+        <mat-icon>favorite</mat-icon>
+        <label for="logged_workouts">Logged Workouts</label>
+      </a>
+    </div>
+    <div class="logged-in">
+      <a mat-button routerLink="/" (click)="logout()">
+        <mat-icon>exit_to_app</mat-icon>
+        <label for="logout">Logout</label>
+      </a>
+    </div>
+  </ng-container>
+
+</mat-toolbar>

@@ -1,0 +1,25 @@
+<mat-card class="content-container" fxLayoutAlign="center" fxLayout="column">
+  <mat-card-header>
+    <mat-card-title>Logged Workouts</mat-card-title>
+    <mat-card-subtitle>Quickly see all the workouts you've done</mat-card-subtitle>
+  </mat-card-header>
+
+  <div fxLayout="column">
+    <table mat-table [dataSource]="logs" fxFlex fxFlexFill>
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef>Workout Name</mat-header-cell>
+        <mat-cell *matCellDef="let log">{{log.workout?.name}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="time">
+        <mat-header-cell *matHeaderCellDef>Time logged</mat-header-cell>
+        <mat-cell *matCellDef="let log">{{log.timestamp | date: 'medium'}}</mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;" class="workout-row" matRipple
+               [routerLink]="['../', row.workout._id]"></mat-row>
+    </table>
+    <mat-paginator [pageSizeOptions]="[10, 20]" showFirstLastButtons></mat-paginator>
+  </div>
+</mat-card>

@@ -1,0 +1,20 @@
+<h1 mat-dialog-title>Add Workout</h1>
+<div mat-dialog-content class="workout-form-container">
+  <form [formGroup]="form" fxLayout="column">
+    <mat-form-field appearance="fill">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" required />
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description"></textarea>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [mat-dialog-close]="form.value" [disabled]="form.invalid">
+    Add
+  </button>
+</div>

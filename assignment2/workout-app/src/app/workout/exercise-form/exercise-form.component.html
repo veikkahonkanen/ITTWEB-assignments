@@ -1,0 +1,40 @@
+<h1 mat-dialog-title>Add Exercise</h1>
+<div mat-dialog-content class="exercise-form-container">
+  <form [formGroup]="form" fxLayout="column">
+    <mat-form-field appearance="outline">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" required />
+      <mat-error>This field is required.</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description" required></textarea>
+      <mat-error>This field is required.</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Sets</mat-label>
+      <input matInput formControlName="sets" type="number" required/>
+      <mat-error>This field is required.</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Duration Type</mat-label>
+      <mat-select #type formControlName="durationType" required>
+        <mat-option value="time">Time</mat-option>
+        <mat-option value="reps">Reps</mat-option>
+      </mat-select>
+      <mat-hint>You need to select one of those.</mat-hint>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Duration</mat-label>
+      <input matInput type="number" formControlName="duration" required/>
+      <mat-error>This field is required.</mat-error>
+      <mat-hint>Enter {{type.value === "time" ? " time in seconds." : " number of repetitions."}}</mat-hint>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [mat-dialog-close]="form.value" [disabled]="form.invalid">
+    Add
+  </button>
+</div>

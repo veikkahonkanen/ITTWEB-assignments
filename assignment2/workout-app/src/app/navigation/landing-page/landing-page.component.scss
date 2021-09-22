@@ -1,0 +1,35 @@
+h1{
+        text-align: center;
+        font-weight: bold;
+        padding: 20px;
+}
+
+.landing-page-element .workout-card {
+    height: 128px;
+    border-radius: 2px;
+  }
+
+  .landing-page-element .workout-card .card-header-image {
+    background-image: url("../../../favicon.ico");
+  }
+  
+
+@media only screen and (max-width: 720px){
+    .content-container{
+        min-height: 1000px;
+    }
+
+    .workout-card{
+        max-height: 150px;
+    }
+}
+
+@media only screen and (min-width: 721px){
+    .content-container{
+        min-height: 400px;
+    }
+
+    .workout-card{
+        max-height: 100px;
+    }
+}

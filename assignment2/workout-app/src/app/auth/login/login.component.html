@@ -1,0 +1,27 @@
+<div fxFlex fxLayoutAlign="center center" >
+    <mat-card class="login-container" fxLayoutAlign="center" fxLayout="column">
+
+        <mat-card-header>
+        <h1 mat-card-title>Login</h1>
+        </mat-card-header>
+        <div mat-card-content id="content">
+                <form [formGroup]="form" fxLayout="column" (ngSubmit)="login()">
+                    <mat-form-field appearance="outline">
+                        <mat-label for="email">E-mail address</mat-label>
+                        <input matInput type="email" formControlName="email" placeholder="Enter e-mail address" required>
+                        <mat-error>Required field for logging in.</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                        <mat-label for="password">Password</mat-label>
+                        <input matInput type="password" formControlName="password" placeholder="Enter password" required>
+                        <mat-error>Required field for logging in.</mat-error>
+                    </mat-form-field>
+                    <br>
+                    <button mat-raised-button color="accent" type="submit" [disabled]="form.invalid">Login</button>
+                </form>
+        </div>
+    
+    
+    </mat-card>
+    
+</div>

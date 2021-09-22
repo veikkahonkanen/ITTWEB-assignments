@@ -1,0 +1,44 @@
+<mat-card class="content-container">
+  <mat-card-header>
+    <mat-card-title-group>
+    <mat-card-title>{{workout.name}}</mat-card-title>
+    </mat-card-title-group>
+    <ng-container *ngIf="isLoggedIn$ | async">
+      <div fxFlex></div>
+      <div fxHide fxShow.gt-sm>
+        <button mat-raised-button color="accent" (click)="logWorkout()">Log Workout</button>
+      </div>
+    </ng-container>
+  </mat-card-header>
+  <mat-card-content fxLayout="column">
+    <button *ngIf="isLoggedIn$ | async" fxHide.gt-sm fxShow mat-raised-button color="accent" (click)="logWorkout()">Log Workout</button>
+
+    <table mat-table [dataSource]="workout.exercises"  fxFlex fxFlexFill style="padding-bottom: 24px;">
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+        <mat-cell *matCellDef="let e">{{e.name}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="desc">
+        <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
+        <mat-cell *matCellDef="let e">{{e.description}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="sets">
+        <mat-header-cell *matHeaderCellDef>Set(s)</mat-header-cell>
+        <mat-cell *matCellDef="let e">{{e.sets}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="reps">
+        <mat-header-cell *matHeaderCellDef>Reps/Time</mat-header-cell>
+        <mat-cell *matCellDef="let e">{{e.duration}} {{e.durationType === "time" ? " sec." : ""}}</mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </table>
+  </mat-card-content>
+</mat-card>
+<button mat-fab class="add-button" (click)="addExercise()" *ngIf="workout.userId === currentUserId">
+  <mat-icon>add</mat-icon>
+</button>

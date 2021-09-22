@@ -1,0 +1,21 @@
+<h1>TOP WORKOUTS</h1>
+<div class="content-container" fxLayoutAlign="center" fxLayout="column">
+
+  <div class="landing-page-element"  fxLayout="row wrap" fxLayoutAlign="start center" fxLayoutGap="32px grid">
+    <div fxFlex *ngFor="let workout of workouts">
+      <a style="text-decoration: none" routerLink="/workouts/{{workout._id}}">
+        <mat-card class="workout-card">
+          <mat-card-header>
+            <div mat-card-avatar class="card-header-image"></div>
+            <mat-card-title>{{workout.name}}</mat-card-title>
+            <mat-card-subtitle>Created by: {{workout.userId}}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <span>{{workout.description}}</span>
+          </mat-card-content>
+        </mat-card>
+      </a>
+    </div>
+
+  </div>
+</div>

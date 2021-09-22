@@ -1,0 +1,79 @@
+{
+  "name": "dual-n-back",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@material-ui/core": "^4.11.1",
+    "@material-ui/data-grid": "^4.0.0-alpha.12",
+    "@material-ui/icons": "^4.11.2",
+    "@material-ui/styles": "^4.11.2",
+    "@testing-library/jest-dom": "^5.11.6",
+    "@testing-library/react": "^11.2.2",
+    "@testing-library/user-event": "^12.2.2",
+    "@types/jest": "^26.0.15",
+    "@types/node": "^12.19.7",
+    "@types/react": "^16.14.2",
+    "@types/react-dom": "^16.9.10",
+    "env-cmd": "^10.1.0",
+    "react": "^17.0.1",
+    "react-app-rewired": "^2.1.8",
+    "react-dom": "^17.0.1",
+    "react-flip-move": "^3.0.4",
+    "react-router-dom": "^5.2.0",
+    "rxjs": "^6.6.3",
+    "web-vitals": "^0.2.4",
+    "workbox-background-sync": "^5.1.4",
+    "workbox-broadcast-update": "^5.1.4",
+    "workbox-cacheable-response": "^5.1.4",
+    "workbox-core": "^5.1.4",
+    "workbox-expiration": "^5.1.4",
+    "workbox-google-analytics": "^5.1.4",
+    "workbox-navigation-preload": "^5.1.4",
+    "workbox-precaching": "^5.1.4",
+    "workbox-range-requests": "^5.1.4",
+    "workbox-routing": "^5.1.4",
+    "workbox-strategies": "^5.1.4",
+    "workbox-streams": "^5.1.4",
+    "typescript": "^4.1.2",
+    "express": "^4.17.1",
+    "react-scripts": "4.0.1"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "startNormal": "react-scripts start",
+    "start:prod": "env-cmd -f .env.production react-scripts start",
+    "build:prod": "env-cmd -f .env.production react-scripts build",
+    "servePWA": "npm run build:prod && http-server ./build",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "postinstall": "react-scripts build",
+    "publishheroku": "cd ../../ && git subtree push --prefix assignment3/dual-n-back heroku-itweb-g11-dual-n-back master || true"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@types/react-router-dom": "^5.1.6",
+    "http-server": "^0.12.3"
+  },
+  "engines": {
+    "node": "10.19.0",
+    "npm": "6.14.4"
+  }
+}

@@ -1,0 +1,45 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+$content-container-margin: 16px;
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+.box {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+}
+
+
+/* --- Content --- */
+.box .row.content {
+  background: #f5f5dc;
+  flex: 1 1 auto;
+  overflow: auto;
+  .content-container {
+    margin: $content-container-margin;
+    padding: 32px 32px 0 32px;
+    .text{
+      font-size: xx-large;
+      text-align: center;
+      margin: 32px;
+    }
+      }
+  
+}
+
+
+

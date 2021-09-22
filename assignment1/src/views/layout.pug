@@ -1,0 +1,20 @@
+extends base-layout
+
+block main-content
+  body.d-flex.flex-column.h-100
+    header
+      nav.navbar.navbar-expand-md.navbar-dark.fixed-top.bg-dark
+        a.nav.navbar-brand(href='/workouts')
+          img.d-inline-block.align-top(src='/images/favicon.ico' alt='' width='30' height='30').mr-3
+          span FITPUG
+        ul.navbar-nav.ml-auto
+          li.nav-item.dropdown
+            a#navbarLogout.nav-link.dropdown-toggle(href='/workouts' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+              span.mr-1= username
+            .dropdown-menu(aria-labelledby='navbarDropdownMenuLink')
+              a.dropdown-item(href='/auth/logout') Logout
+    .p-4
+    main.container-main
+      block content
+    footer.footer.container-fluid
+      span.text-muted © Webpage by the Internationals 2020

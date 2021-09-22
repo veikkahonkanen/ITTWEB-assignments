@@ -1,0 +1,22 @@
+mat-card {
+    text-align: center;
+}
+
+.register-container{
+    max-width: 400px;
+    width: 400px;
+    margin-top: 48px;
+    @media screen and (max-width: 400px){
+        width: 100%;
+    }
+}
+
+#content{
+    padding: 16px;
+}
+
+
+
+button {
+    margin-top: 24px;
+}

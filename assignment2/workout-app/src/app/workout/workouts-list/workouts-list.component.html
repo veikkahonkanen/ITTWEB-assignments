@@ -1,0 +1,32 @@
+<mat-card class="content-container" fxLayoutAlign="center" fxLayout="column">
+  <mat-card-header>
+    <mat-card-title>Workouts</mat-card-title>
+    <mat-card-subtitle>
+      <span>View all the created workouts</span>
+      <span *ngIf="isLoggedIn$ | async">. You can also add workouts and edit your created workouts!</span>  
+    </mat-card-subtitle>
+  </mat-card-header>
+
+  <div fxLayout="column">
+    <table mat-table [dataSource]="workoutDataSource" fxFlex fxFlexFill>
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+        <mat-cell *matCellDef="let workout">
+          <mat-icon *ngIf="workout.userId === currentUserId">person</mat-icon>&nbsp;{{workout.name}}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="description">
+        <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
+        <mat-cell *matCellDef="let workout">{{workout.description}}</mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;" class="workout-row" matRipple [routerLink]="row._id"></mat-row>
+    </table>
+    <mat-paginator [pageSizeOptions]="[10, 20]" showFirstLastButtons></mat-paginator>
+  </div>
+</mat-card>
+<button mat-fab class="add-button" (click)="addWorkout()" *ngIf="isLoggedIn$ | async">
+  <mat-icon>add</mat-icon>
+</button>

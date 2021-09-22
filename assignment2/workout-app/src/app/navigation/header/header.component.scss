@@ -1,0 +1,19 @@
+@media only screen and (max-width: 450px) {
+  label {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 451px) {
+  label {
+    display: inline;
+  }
+}
+.spacer {
+  flex: 1 1 auto;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}

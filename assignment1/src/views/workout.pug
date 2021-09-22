@@ -1,0 +1,57 @@
+extends layout
+
+block content
+    .workout-content.p-3
+        .container-fluid
+            button.btn.btn-primary.float-right.mr-3(role="button" data-toggle="modal" data-target="#createWorkoutModal")
+                svg.bi.bi-plus-circle(width='1em' height='1em' viewBox='0 0 16 16' fill='currentColor' xmlns='http://www.w3.org/2000/svg').mr-2
+                    path(fill-rule='evenodd' d='M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z')
+                    path(fill-rule='evenodd' d='M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z')
+                | Add
+            h3.pl-3.my-3= title
+            .row.p-3
+                table.table.table-striped
+                    thead
+                        tr
+                            th(scope="col") Exercise
+                            th(scope="col") Description
+                            th(scope="col") Set
+                            th(scope="col") Reps/time
+                    tbody
+                    each exercise in workout.exercises
+                        tr
+                            td(scope="row")= exercise.name
+                            td= exercise.description
+                            td= exercise.sets
+                            td= exercise.duration
+                                span= exercise.durationType === "time" ? " sec." : ""
+
+    // Modal
+    #createWorkoutModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='createExerciseModal' aria-hidden='true')
+        .modal-dialog(role='document')
+            .modal-content
+                .modal-header
+                    h5#exampleModalLabel.modal-title Add to Workout
+                    button.close(type='button' data-dismiss='modal' aria-label='Close')
+                    span(aria-hidden='true') ×
+                .modal-body
+                    form(action='/workouts/'+ workout._id, method='post')
+                        .form-group
+                            label.ml-1(for='name') Exercise Name
+                            input#name.form-control(name='name' autocomplete="off" placeholder='Enter exercise name')
+                            label.mt-3.ml-1(for='description') Description
+                            input#description.form-control(name='description' autocomplete="off" placeholder='Enter exercise description')
+                            label.mt-3.ml-1(for='sets') Sets
+                            input#sets.form-control(name='sets' autocomplete="off" placeholder='Enter amount of sets', type='number')
+                            label.mt-3.ml-1 Duration type
+                            br
+                            .form-check.form-check-inline
+                                label.mx-1(for='durationTypeTime' class="form-check-label") Time
+                                input#durationTypeTime.form-control(name='durationType' value='time' type='radio' class="form-check-input" checked)
+                            .form-check.form-check-inline
+                                label.mr-1(for='durationTypeReps' class="form-check-label") Repetitions
+                                input#durationTypeReps.form-control(name='durationType' value='reps' type='radio' class="form-check-input")
+                            br
+                            label.mt-3.ml-1(for='duration') Duration
+                            input#duration.form-control(name='duration' autocomplete="off" placeholder='Enter reps or time (seconds)', type='number')
+                        button.btn.btn-primary(type='submit') Create
